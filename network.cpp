@@ -14,6 +14,7 @@ Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
+    loadDB(fileName);
 }
 
 Network::~Network(){ 
@@ -38,6 +39,43 @@ Person* Network::search(string fname, string lname){
 
 void Network::loadDB(string filename){
     // TODO: Complete this method
+    std::ifstream file_in(filename);
+    std::string line;
+    while(std::getline(file_in, line)){
+        // first line is first name
+        std::string first_name = line; 
+
+        // second line last name
+        std::string last_name;
+        std::getline(file_in, last_name);
+
+        // third line dob
+        std::string dob;
+        std::getline(file_in, dob); 
+
+        // forth line email (type and addr)
+        std::getline(file_in, line);  
+        int email_idx = line.find(" ");
+        std::string email_type;
+        std::string email_addr;
+        email_type = line.substr(1, email_idx-1);  // get <type> string without parenthesis
+        email_addr = line.substr(email_idx + 1);  // get email after the whitespace
+        extern Email newEmail(email_type, email_addr);
+
+        // fifth line phone number
+        std::getline(file_in, line);  
+        std::string phone_type;
+        std::string phone_num;
+        int phone_idx = line.find(" ");
+        phone_type = line.substr(1, phone_idx-1);
+        phone_num = line.substr(phone_idx + 1);
+
+        std::getline(file_in, line); // get rid of the dash
+
+        //TODO: create a new Person object and add it to the network
+
+    }
+
 }
 
 void Network::saveDB(string filename){
