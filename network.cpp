@@ -2,9 +2,11 @@
 #include <limits>
 #include "misc.h"
 #include <dirent.h>
-#include <fstream>
 #include <cstring>
 #include <string>
+#include <iostream>
+#include <fstream>
+
 
 using namespace std;
 
@@ -68,7 +70,7 @@ Person* Network::search(string fname, string lname){
 
 void Network::loadDB(string file_name){
     // TODO: Complete this method
-    ifstream file_in(file_name);
+    std::ifstream file_in(file_name.c_str());
     string line;
     while(getline(file_in, line)){
         // first line is first name
@@ -110,7 +112,7 @@ void Network::loadDB(string file_name){
 void Network::saveDB(string filename){
     // TODO: Complete this method
     Person* personPtr = head;
-    ofstream outfile(filename);
+    std::ofstream outfile(filename.c_str());
     while(personPtr != NULL){
         outfile << personPtr->f_name << "\n";
         outfile << personPtr->l_name << "\n";
@@ -238,7 +240,6 @@ void Network::showMenu(){
                     std::cout << fileName << std::endl;
                 }
             }
-            
             // Close the directory
             closedir(dir);
             //*/

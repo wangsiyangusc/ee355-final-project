@@ -6,6 +6,7 @@
 // You may need to add more libraries 
 #include <stdlib.h>
 
+
 class Network{
     private:
         Person* head;
