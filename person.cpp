@@ -14,15 +14,14 @@ Person::~Person(){
 }
 
 
-Person::Person(string f_name, string l_name, string b_date, string email, string phone){
+Person::Person(string f_name, string l_name, string b_date, string email_type, string email_addr, string phone_type, string phone_num){
     // TODO: Complete this method!
     // phone and email strings are in full version
     this->f_name = f_name;
     this->l_name = l_name;
     this->birthdate = new Date(b_date);
-    this->email = new Email("full",email);
-    this->phone = new Phone("full",phone);
-
+    this->email = new Email(email_type, email_addr);
+    this->phone = new Phone(phone_type, phone_num);
 }
 
 
@@ -38,7 +37,6 @@ void Person::set_person(){
     // We are sure user enters info in correct format.
     // TODO: complete this method!
 
-    
     string temp;
     string type;
 
@@ -115,7 +113,6 @@ bool Person::operator==(const Person& rhs){
     else{
         return false;
     }
-
 }
 
 bool Person::operator!=(const Person& rhs){ 

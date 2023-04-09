@@ -5,8 +5,8 @@
 #include "date.h"
 // You may need to add more libraries 
 #include <stdlib.h>
-class Network{
 
+class Network{
     private:
         Person* head;
         Person* tail;
@@ -18,6 +18,8 @@ class Network{
         Network();
         Network(string fileName);
         ~Network();
+        void loadDB(string filename);
+        void saveDB(string filename);
         void printDB();
         void push_front(Person* newEntry);
         void push_back(Person* newEntry);
