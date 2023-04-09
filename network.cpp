@@ -222,28 +222,26 @@ void Network::showMenu(){
             cout << "Loading network database \n";
             // TODO: print all the files in this same directory that have "networkDB.txt" format
             
-            /*
-            const char* directory_path = ".";
-            // Open the directory
-            DIR* dir = opendir(directory_path);
-            if (dir == nullptr) {
-                cerr << "Error: Failed to open directory." << endl;
-                return 1;
+            ///*
+            DIR* dir = opendir(".");
+            if (!dir) {
+                std::cerr << "Could not open current directory" << std::endl;
             }
-            // Iterate over all files in the directory
-            dirent* entry;
-            while ((entry = readdir(dir)) != nullptr) {
-                // Check if the file has the "networkDB.txt" format
-                if (entry->d_type == DT_REG && 
-                    strstr(entry->d_name, "networkDB") != nullptr && 
-                    strstr(entry->d_name, ".txt") != nullptr) {
+            
+            // Loop through all files in the directory
+            struct dirent* entry;
+            while ((entry = readdir(dir))) {
+                // Check if the file name matches the format "networkDB.txt"
+                std::string fileName(entry->d_name);
+                if (fileName.size() == 13 && fileName.substr(0, 10) == "networkDB." && fileName.substr(10, 3) == "txt") {
                     // Print the file name
-                    cout << entry->d_name << endl;
+                    std::cout << fileName << std::endl;
                 }
             }
+            
             // Close the directory
             closedir(dir);
-            */
+            //*/
 
             // Take a look into sample_files.cpp 
             cout << "Enter the name of the load file: "; 
