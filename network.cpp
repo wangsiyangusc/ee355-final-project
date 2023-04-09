@@ -168,7 +168,7 @@ bool Network::remove(string fname, string lname){
     // need search name first
     Person* delPerson;
     bool removed = false;
-    while(delPerson=search(fname, lname) != NULL){
+    while((delPerson=search(fname, lname)) != NULL){
         delPerson->prev->next = delPerson->next;  // link next of prev node to the next node
         delPerson->next->prev = delPerson->prev;  // link prev of next node to the prev node
         removed = true;
@@ -284,7 +284,7 @@ void Network::showMenu(){
             cin >> lname;
             // if found: print connection
             Person* searchRes;
-            if (searchRes=search(fname, lname) != NULL) 
+            if ((searchRes=search(fname, lname)) != NULL) 
                 searchRes->print_person();
             else 
                 cout << "Not found! \n";
