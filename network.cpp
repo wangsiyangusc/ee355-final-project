@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include "network.h"
 
 using namespace std;
 
@@ -42,6 +42,7 @@ Person* Network::search(Person* searchEntry){
     while (tempPerson != NULL){
         if (searchEntry == tempPerson){
             searchResult = tempPerson;
+            break;
         }
         tempPerson = tempPerson->next;
     }
@@ -62,6 +63,7 @@ Person* Network::search(string fname, string lname){
         plname = tempPerson->l_name;
         if ((pfname == fname) && (plname == lname)){
             searchResult = tempPerson;
+            break;
         }
         tempPerson = tempPerson->next;
     }
@@ -112,14 +114,19 @@ void Network::loadDB(string file_name){
 void Network::saveDB(string filename){
     // TODO: Complete this method
     Person* personPtr = head;
+    int cnt = 0;
     std::ofstream outfile(filename.c_str());
-    while(personPtr != NULL){
+    cout << count << "\n";
+    while(cnt < count){
         outfile << personPtr->f_name << "\n";
         outfile << personPtr->l_name << "\n";
         outfile << personPtr->birthdate->get_month() << "/" << personPtr->birthdate->get_day() << "/" << personPtr->birthdate->get_year() << "\n";
         outfile << personPtr->email->get_contact() << "\n";
         outfile << personPtr->phone->get_contact() << "\n";
         outfile << "--------------------\n";
+        personPtr = personPtr->next;
+        cout << "connection: " << cnt << " saved!" << "\n";
+        cnt++;
     }
 }
 
@@ -237,6 +244,7 @@ void Network::showMenu(){
                 std::string fileName(entry->d_name);
                 if (fileName.size() == 13 && fileName.substr(0, 10) == "networkDB." && fileName.substr(10, 3) == "txt") {
                     // Print the file name
+                    findFile = 1;
                     std::cout << fileName << std::endl;
                 }
             }
