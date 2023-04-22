@@ -56,8 +56,8 @@ Person* Network::search(string fname, string lname){
     // Note: two ways to implement this, 1st making a new Person with fname and lname and and using search(Person*), 2nd using fname and lname directly. 
     Person* tempPerson = head;
     Person* searchResult = NULL;
-    string pfname = tempPerson->f_name;
-    string plname = tempPerson->l_name;
+    string pfname;
+    string plname;
     while (tempPerson != NULL){
         pfname = tempPerson->f_name;
         plname = tempPerson->l_name;
@@ -108,6 +108,7 @@ void Network::loadDB(string file_name){
         Person* newPerson;
         newPerson = new Person(first_name, last_name, dob, email_type, email_addr, phone_type, phone_num);
         push_back(newPerson); // add new person to the end of network
+        newPerson->print_person();
     }
 }
 
@@ -290,11 +291,14 @@ void Network::showMenu(){
             cout << "Last Name: ";
             cin >> lname;
             // if found: print connection
-            Person* searchRes;
-            if ((searchRes=search(fname, lname)) != NULL) 
+            Person* searchRes = search(fname, lname);
+            if (searchRes != NULL) {
+                cout << "found" << "\n";
                 searchRes->print_person();
-            else 
+            }
+            else {
                 cout << "Not found! \n";
+            }
             // if not, cout << "Not found! \n";
         }
         else
