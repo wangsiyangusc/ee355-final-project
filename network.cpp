@@ -32,7 +32,7 @@ Network::~Network(){
         personPtr = nextPtr;
     }
 }
-
+/*
 Person* Network::search(Person* searchEntry){
     // Searches the Network for searchEntry
     // if found, returns a pointer to it, else returns NULL
@@ -47,7 +47,7 @@ Person* Network::search(Person* searchEntry){
         tempPerson = tempPerson->next;
     }
     return searchResult;
-}
+}*/
 
 Person* Network::search(string fname, string lname){
     // New == for Person, only based on fname and lname
@@ -61,7 +61,15 @@ Person* Network::search(string fname, string lname){
     while (tempPerson != NULL){
         pfname = tempPerson->f_name;
         plname = tempPerson->l_name;
-        if ((pfname == fname) && (plname == lname)){
+        /*
+        if (fname == pfname){
+            cout << "first match" << "\n";
+        }
+        if (lname == plname){
+            cout << "last match" << "\n";
+        }
+        cout << "first: " << pfname << " last: " << plname << "\n";*/
+        if ((fname == pfname) && (lname == plname)){
             searchResult = tempPerson;
             break;
         }
@@ -287,9 +295,9 @@ void Network::showMenu(){
             // TODO: Complete me!
             cout << "Searching: \n";
             cout << "First Name: ";
-            cin >> fname;
+            getline(cin, fname);
             cout << "Last Name: ";
-            cin >> lname;
+            getline(cin, lname);
             // if found: print connection
             Person* searchRes = search(fname, lname);
             if (searchRes != NULL) {
