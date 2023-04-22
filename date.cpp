@@ -58,3 +58,18 @@ void Date::set_date(int day, int month, int year)
     this->year = year;
 }
 
+int Date::get_day() const
+{
+    return day;
+}
+
+int Date::get_month() const
+{
+    return month;
+}
+
+int Date::get_year() const
+{
+    return year;
+}
+
