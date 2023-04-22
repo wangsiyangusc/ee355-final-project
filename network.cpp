@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "network.h"
+#include "person.h"
 
 using namespace std;
 
