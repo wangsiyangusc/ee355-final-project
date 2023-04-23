@@ -377,6 +377,9 @@ void Network::showMenu()
                 }
                 if (notfound1 & notfound2)
                 {
+                    // Add each person to the other's vector of friends
+                    searchRes1->makeFriend(searchRes2);
+                    searchRes2->makeFriend(searchRes1);
                     cout << "\n";
                     searchRes1->print_person();
                     cout << "\n";
