@@ -14,9 +14,20 @@ void printMe(string type){
     }
 }
 
-string codeName(string str1, string str2){
-    string result = str1 + str2;
-    result.erase(remove(result.begin(), result.end(), ' '), result.end()); //Remove spaces
-    transform(result.begin(), result.end(), result.begin(), ::tolower); //Convert to lowercase
+string codeName(string str1, string str2) {
+    string result = "";
+    
+    // Concatenate str1 and str2 without spaces
+    for (char c : str1) {
+        if (c != ' ') {
+            result += tolower(c);
+        }
+    }
+    for (char c : str2) {
+        if (c != ' ') {
+            result += tolower(c);
+        }
+    }
+    
     return result;
 }
