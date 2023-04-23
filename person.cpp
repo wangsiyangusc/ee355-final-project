@@ -1,5 +1,6 @@
 #include "person.h"
 #include "date.h"
+#include "misc.h"
 Person::Person(){
     // I'm already done! 
     set_person();
@@ -79,29 +80,38 @@ void Person::set_person(string filename){
     // Note: You should use fstream library to read from a file
     // Note: You should use getline to read a line from a file
     // Note: You should use string::find to find a substring in a string
-
-    string line;
-    string type;
     string temp;
+    string type;
 
-    ifstream file(filename);
-    getline(file, line);
-    f_name = line;
-    getline(file, line);
-    l_name = line;
-    getline(file, line);
-    birthdate = new Date(line);
-    getline(file, temp ,' ');
-    type = temp.substr(1, temp.size()-2);
-    getline(file, line);
-    phone = new Phone(type, line);
-    getline(file, temp ,' ');
-    type = temp.substr(1, temp.size()-2);
-    getline(file, line);
-    email = new Email(type, line);
+    cout << "First Name: ";
+    // pay attention to how we read first name, as it can have spaces!
+    std::getline(std::cin,f_name);
+
+	cout << "Last Name: ";
+    std::getline(std::cin,l_name);
+
+    cout << "Birthdate (M/D/YYYY): ";
+    std::getline(std::cin,temp);
+    // pay attention to how we passed argument to the constructor of a new object created dynamically using new command
+    birthdate = new Date(temp); 
+
+    cout << "Type of email address: ";
+    // code here
+    std::getline(std::cin,type);
+    cout << "Email address: ";
+    // code here
+    std::getline(std::cin,temp);
+    email = new Email(type, temp);
+
+    cout << "Type of phone number: ";
+    std::getline(std::cin,type);
+    // code here
+    cout << "Phone number: ";
+    std::getline(std::cin,temp);
+    phone = new Phone(type, temp);
+    // code here
+    // code here
 }
-
-
 
 bool Person::operator==(const Person& rhs){
     // TODO: Complete this method!
@@ -134,6 +144,15 @@ void Person::print_person(){
 	birthdate->print_date("Month D, YYYY");
     phone->print();
     email->print();
+    string fname;
+    string lname;
+    string f_id;
+    for (int i=0; i<(this->myfriends.size()); i++){
+        fname = this->myfriends[i]->f_name;
+        lname = this->myfriends[i]->l_name;
+        f_id = codeName(f_name, l_name);
+        cout << f_id << "\n";
+    }
 }
 
 void Person::makeFriend(Person* newFriend){

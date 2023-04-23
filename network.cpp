@@ -36,7 +36,7 @@ Network::~Network()
         personPtr = nextPtr;
     }
 }
-/*
+
 Person* Network::search(Person* searchEntry){
     // Searches the Network for searchEntry
     // if found, returns a pointer to it, else returns NULL
@@ -51,7 +51,7 @@ Person* Network::search(Person* searchEntry){
         tempPerson = tempPerson->next;
     }
     return searchResult;
-}*/
+}
 
 Person *Network::search(string fname, string lname)
 {

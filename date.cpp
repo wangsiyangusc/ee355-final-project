@@ -1,4 +1,5 @@
 #include "date.h"
+#include "cstring"
 
 Date::Date(int day, int month, int year) {
     set_date(day, month, year);
@@ -31,11 +32,11 @@ void Date::set_date(const string &date_string)
     istringstream iss(date_string);
     string token;
     getline(iss, token , '/');
-    month = stoi(token);
+    month = atoi(token.c_str());
     getline(iss, token , '/');
-    day = stoi(token);
+    day = atoi(token.c_str());
     getline(iss, token , '/');
-    year = stoi(token);
+    year = atoi(token.c_str());
 }
 
 void Date::set_date(int day, int month, int year)
