@@ -149,13 +149,13 @@ void Person::print_person(){
     string f_id;
     if (!(this->myfriends.empty())){
         int friend_num = this->myfriends.size();
-        cout << "friend num " << friend_num << "\n";
         for (int i=0; i<friend_num; i++){
+            //cout << "friends are : \n";
             fname = this->myfriends[i]->f_name;
-            cout << fname << "; ";
+            //cout << fname << "; ";
             lname = this->myfriends[i]->l_name;
-            cout << lname << "\n";
-            f_id = codeName(f_name, l_name);
+            //cout << lname << "\n";
+            f_id = codeName(fname, lname);
             cout << f_id << "\n";
         }
     }
