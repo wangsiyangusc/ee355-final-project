@@ -147,12 +147,24 @@ void Person::print_person(){
     string fname;
     string lname;
     string f_id;
-    for (int i=0; i<(this->myfriends.size()); i++){
+    if (!(this->myfriends.empty())){
+        int friend_num = this->myfriends.size();
+        cout << "friend num " << friend_num << "\n";
+        for (int i=0; i<friend_num; i++){
+            fname = this->myfriends[i]->f_name;
+            cout << fname << "; ";
+            lname = this->myfriends[i]->l_name;
+            cout << lname << "\n";
+            f_id = codeName(f_name, l_name);
+            cout << f_id << "\n";
+        }
+    }
+    /*for (int i=0; i<(this->myfriends.size()); i++){
         fname = this->myfriends[i]->f_name;
         lname = this->myfriends[i]->l_name;
         f_id = codeName(f_name, l_name);
         cout << f_id << "\n";
-    }
+    }*/
 }
 
 void Person::makeFriend(Person* newFriend){
